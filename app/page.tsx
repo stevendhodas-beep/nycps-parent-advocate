@@ -39,7 +39,7 @@ export default function Home() {
       (res.workflows_executed as string[] | undefined)?.includes("cec_voter_briefing") ||
       CEC_KEYWORDS.some(kw => (res.intent as string ?? "").toLowerCase().includes(kw));
     if (isCEC) { setShowCEC(true); return; }
-    setResult(res as OrchestratorResult);
+    setResult(res as unknown as OrchestratorResult);
   };
 
   const handleConsentRequired = (actions: string[]) => {
