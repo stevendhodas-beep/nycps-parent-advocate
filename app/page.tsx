@@ -7,11 +7,12 @@
  * Implements the full lane → intent → consent → result loop.
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IntentInput from "../components/IntentInput";
 import ConsentModal from "../components/ConsentModal";
 import CECVoterBriefing from "../components/CECVoterBriefing";
 import Header from "../components/Header";
+import { useAuth } from "../lib/AuthContext";
 
 const CEC_KEYWORDS = ["vote", "cec", "election", "candidate", "council", "ballot"];
 
@@ -28,11 +29,18 @@ interface OrchestratorResult {
 }
 
 export default function Home() {
+  const { workflowResetCount } = useAuth();
   const [result, setResult] = useState<OrchestratorResult | null>(null);
   const [consentOpen, setConsentOpen] = useState(false);
   const [consentActions, setConsentActions] = useState<string[]>([]);
   const [authRequired, setAuthRequired] = useState(false);
   const [showCEC, setShowCEC] = useState(false);
+
+  useEffect(() => {
+    setResult(null);
+    setShowCEC(false);
+    setAuthRequired(false);
+  }, [workflowResetCount]);
 
   const handleResult = (res: Record<string, unknown>) => {
     const isCEC =

@@ -88,6 +88,13 @@ export async function initAutoSession(): Promise<SessionToken> {
           lane: "lane2",
           expiresAt: new Date(Date.now() + expires_in * 1000),
         };
+        // Seed demo consent grants so "Records Shared" reflects permissions page data
+        if (loadPersistedGrants().length === 0) {
+          savePersistedGrants([
+            { consentId: "consent-a1b2c3d4", approvedFields: ["iep_document", "disability_classification", "service_hours"], deniedFields: [], expiresAt: "2026-06-12T00:00:00Z", action: "IEP Record Transfer" },
+            { consentId: "consent-e5f6g7h8", approvedFields: ["medical_action_plan", "emergency_contacts"], deniedFields: [], expiresAt: "2026-08-31T00:00:00Z", action: "Medical Record Sharing" },
+          ]);
+        }
         return _activeToken;
       }
     }
