@@ -70,7 +70,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Header() {
-  const { lane, recordsShared, signOut } = useAuth();
+  const { lane, recordsShared, signOut, resetWorkflow } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [authDropOpen, setAuthDropOpen] = useState(false);
   const authDropRef = useRef<HTMLDivElement>(null);
