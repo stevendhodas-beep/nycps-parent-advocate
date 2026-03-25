@@ -101,6 +101,7 @@ export default function Home() {
         {/* Intent input */}
         <section>
           <IntentInput
+            key={workflowResetCount}
             onResult={handleResult}
             onConsentRequired={handleConsentRequired}
             onAuthRequired={handleAuthRequired}
