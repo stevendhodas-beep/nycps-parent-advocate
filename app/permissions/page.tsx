@@ -88,15 +88,35 @@ export default function PermissionsPage() {
   const [grants, setGrants] = useState(GRANTS);
   const [confirmingRevoke, setConfirmingRevoke] = useState<string | null>(null);
   const [confirmingRestore, setConfirmingRestore] = useState<string | null>(null);
+  const [messagingGrantId, setMessagingGrantId] = useState<string | null>(null);
+  const [msgSubject, setMsgSubject] = useState("");
+  const [msgBody, setMsgBody] = useState("");
+  const [msgSent, setMsgSent] = useState(false);
 
   const revoke = (id: string) => {
     setGrants(g => g.map(gr => gr.id === id ? { ...gr, active: false } : gr));
     setConfirmingRevoke(null);
+    setMessagingGrantId(null);
   };
 
   const restore = (id: string) => {
     setGrants(g => g.map(gr => gr.id === id ? { ...gr, active: true } : gr));
     setConfirmingRestore(null);
+  };
+
+  const openMessage = (grant: Grant) => {
+    setMsgSubject(`Question about ${grant.action} sharing for Jaylen`);
+    setMsgBody("");
+    setMsgSent(false);
+    setMessagingGrantId(grant.id);
+  };
+
+  const sendMessage = () => {
+    setMsgSent(true);
+    setTimeout(() => {
+      setMessagingGrantId(null);
+      setMsgSent(false);
+    }, 2000);
   };
 
   return (
@@ -161,16 +181,22 @@ export default function PermissionsPage() {
                       </div>
 
                       {/* Revoke confirmation panel */}
-                      {confirmingRevoke === grant.id && (
+                      {confirmingRevoke === grant.id && messagingGrantId !== grant.id && (
                         <div className="border-t border-red-100 bg-red-50 px-5 py-4">
                           <p className="text-xs font-semibold text-red-800 mb-1">Before you revoke — here's what will happen:</p>
                           <p className="text-xs text-red-700 leading-relaxed mb-4">{grant.revokeConsequence}</p>
-                          <div className="flex items-center gap-3">
+                          <div className="flex flex-wrap items-center gap-3">
                             <button
                               onClick={() => revoke(grant.id)}
                               className="text-xs font-medium text-white bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg transition-colors"
                             >
                               Yes, revoke access
+                            </button>
+                            <button
+                              onClick={() => openMessage(grant)}
+                              className="text-xs font-medium text-red-700 border border-red-300 hover:bg-red-100 px-3 py-1.5 rounded-lg transition-colors"
+                            >
+                              Message my Parent Coordinator
                             </button>
                             <button
                               onClick={() => setConfirmingRevoke(null)}
@@ -179,6 +205,55 @@ export default function PermissionsPage() {
                               Cancel
                             </button>
                           </div>
+                        </div>
+                      )}
+
+                      {/* PC message composer */}
+                      {messagingGrantId === grant.id && (
+                        <div className="border-t border-gray-200 bg-gray-50 px-5 py-4">
+                          <p className="text-xs font-semibold text-gray-800 mb-3">
+                            Message Sheila Nevins — Parent Coordinator, PS 123
+                          </p>
+                          {msgSent ? (
+                            <p className="text-xs text-green-700 font-medium py-2">Message sent ✓</p>
+                          ) : (
+                            <div className="space-y-2">
+                              <div>
+                                <label className="text-xs text-gray-500 mb-1 block">Subject</label>
+                                <input
+                                  type="text"
+                                  value={msgSubject}
+                                  onChange={e => setMsgSubject(e.target.value)}
+                                  className="w-full text-xs px-3 py-2 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-300"
+                                />
+                              </div>
+                              <div>
+                                <label className="text-xs text-gray-500 mb-1 block">Message</label>
+                                <textarea
+                                  value={msgBody}
+                                  onChange={e => setMsgBody(e.target.value)}
+                                  placeholder="Type your message here..."
+                                  rows={4}
+                                  className="w-full text-xs px-3 py-2 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none"
+                                />
+                              </div>
+                              <div className="flex items-center gap-3 pt-1">
+                                <button
+                                  onClick={sendMessage}
+                                  disabled={!msgBody.trim()}
+                                  className="text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1.5 rounded-lg transition-colors"
+                                >
+                                  Send message
+                                </button>
+                                <button
+                                  onClick={() => setMessagingGrantId(null)}
+                                  className="text-xs font-medium text-gray-600 hover:text-gray-900"
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )}
 
