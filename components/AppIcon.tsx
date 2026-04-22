@@ -21,19 +21,19 @@ export default function AppIcon({ size = 36 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-label="NYCP — NYC Schools Parent Advocate"
     >
-      {/* White background with subtle border — matches NYC brand white canvas */}
+      {/* White background with subtle border */}
       <rect width="36" height="36" rx="8" fill="white" />
       <rect width="36" height="36" rx="8" fill="none" stroke="#D1D5DB" strokeWidth="0.75" />
 
       {/* Line 1: N (green) · Y (orange) */}
       <text
         x="18"
-        y="17"
+        y="19"
         textAnchor="middle"
         fontFamily="var(--font-nunito), 'Nunito', system-ui, sans-serif"
         fontWeight="900"
-        fontSize="14.5"
-        letterSpacing="-0.8"
+        fontSize="20"
+        letterSpacing="-1.5"
       >
         <tspan fill="#4B9A2A">N</tspan>
         <tspan fill="#F0821E">Y</tspan>
@@ -42,12 +42,12 @@ export default function AppIcon({ size = 36 }: { size?: number }) {
       {/* Line 2: C (blue) · P (navy) */}
       <text
         x="18"
-        y="26"
+        y="34"
         textAnchor="middle"
         fontFamily="var(--font-nunito), 'Nunito', system-ui, sans-serif"
         fontWeight="900"
-        fontSize="14.5"
-        letterSpacing="-0.8"
+        fontSize="20"
+        letterSpacing="-1.5"
       >
         <tspan fill="#4E8CC4">C</tspan>
         <tspan fill="#1B2D6C">P</tspan>
