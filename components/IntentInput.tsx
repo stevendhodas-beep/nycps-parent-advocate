@@ -23,7 +23,7 @@ const EXAMPLE_INTENTS = [
   "My child is moving to District 8 and has asthma",
   "I need to check on my child's IEP services",
   "Help me find tutoring for my 9th grader in math",
-  "Who should I vote for in the CEC election?",
+  "Help me vote for the CEC",
 ];
 
 export default function IntentInput({
