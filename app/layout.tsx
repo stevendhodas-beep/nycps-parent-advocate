@@ -10,8 +10,12 @@ export const metadata: Metadata = {
   description:
     "Your AI-powered advocate for navigating NYC Public Schools — transfers, IEPs, benefits, CEC elections, and more.",
   manifest: "/manifest.json",
-  themeColor: "#2563eb",
+  themeColor: "#1e3a8a",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg" }],
+  },
 };
 
 export default function RootLayout({
