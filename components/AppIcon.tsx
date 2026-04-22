@@ -28,7 +28,7 @@ export default function AppIcon({ size = 36 }: { size?: number }) {
       {/* Line 1: N (green) · Y (orange) */}
       <text
         x="18"
-        y="15.5"
+        y="17"
         textAnchor="middle"
         fontFamily="var(--font-nunito), 'Nunito', system-ui, sans-serif"
         fontWeight="900"
@@ -42,7 +42,7 @@ export default function AppIcon({ size = 36 }: { size?: number }) {
       {/* Line 2: C (blue) · P (navy) */}
       <text
         x="18"
-        y="29.5"
+        y="26"
         textAnchor="middle"
         fontFamily="var(--font-nunito), 'Nunito', system-ui, sans-serif"
         fontWeight="900"

@@ -12,7 +12,7 @@
   <!-- Line 1: N (green) · Y (orange) -->
   <text
     x="256"
-    y="215"
+    y="235"
     text-anchor="middle"
     font-family="'Nunito', system-ui, sans-serif"
     font-weight="900"
@@ -25,7 +25,7 @@
   <!-- Line 2: C (blue) · P (navy) -->
   <text
     x="256"
-    y="400"
+    y="365"
     text-anchor="middle"
     font-family="'Nunito', system-ui, sans-serif"
     font-weight="900"
