@@ -13,16 +13,28 @@
     </linearGradient>
   </defs>
 
-  <!-- "NYC" in white, "P" in amber — single centered text block -->
+  <!-- Line 1: NY -->
   <text
     x="256"
-    y="330"
+    y="220"
     text-anchor="middle"
     font-family="system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif"
     font-weight="900"
-    font-size="196"
+    font-size="185"
+    letter-spacing="-6"
+    fill="#ffffff"
+  >NY</text>
+
+  <!-- Line 2: C (white) + P (amber) -->
+  <text
+    x="256"
+    y="400"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="185"
     letter-spacing="-6"
   >
-    <tspan fill="#ffffff">NYC</tspan><tspan fill="#fbbf24">P</tspan>
+    <tspan fill="#ffffff">C</tspan><tspan fill="#fbbf24">P</tspan>
   </text>
 </svg>
