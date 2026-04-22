@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import Providers from "./Providers";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// Loaded globally so SVG text elements inside components can reference it
+const nunito = Nunito({
+  weight: ["900"],
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "NYC Schools Family Advocate",
@@ -25,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}><Providers>{children}</Providers></body>
+      <body className={`${inter.className} ${nunito.variable}`}><Providers>{children}</Providers></body>
     </html>
   );
 }
