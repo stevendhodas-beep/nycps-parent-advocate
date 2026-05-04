@@ -1,0 +1,11 @@
+{
+  "servers": [
+    {
+      "name": "Frontend (Next.js)",
+      "cwd": "/Users/steven/Desktop/Claude Code/nycps-parent-advocate/frontend",
+      "command": "npm run dev",
+      "port": 3000,
+      "env": {}
+    }
+  ]
+}
